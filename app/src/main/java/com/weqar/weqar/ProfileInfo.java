@@ -1,5 +1,6 @@
 package com.weqar.weqar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,8 @@ import android.widget.ScrollView;
 
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
+import cn.refactor.lib.colordialog.PromptDialog;
+
 
 public class ProfileInfo extends AppCompatActivity {
 EditText ET_fname,ET_mname,ET_lname,ET_mobile,ET_address,ET_city,ET_zipcode;
@@ -20,6 +23,7 @@ ScrollView scrollView_personal,scrollView_professional,scrollView_complete;
 Button B_saveandcontinue_personal,B_professional_next;
 ImageView IV_personal,IV_professional,IV_complete;
 View view1,view2,view3,view4;
+Button monthly_first,monthly_scond,monthly_third,but_complete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,10 @@ View view1,view2,view3,view4;
         view2=findViewById(R.id.profile_view2);
         view3=findViewById(R.id.profile_view3);
         view4=findViewById(R.id.profile_view4);
+        monthly_first=findViewById(R.id.monthly_first);
+        monthly_scond=findViewById(R.id.monthly_second);
+        monthly_third=findViewById(R.id.monthly_third);
+        but_complete=findViewById(R.id.complete_but);
 
         ET_fname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -198,10 +206,81 @@ View view1,view2,view3,view4;
                 IV_personal.setImageResource(R.drawable.profile_basic_three);
                 IV_professional.setImageResource(R.drawable.profile_professional_three);
                 IV_complete.setImageResource(R.drawable.profile_complete_two);
+                but_complete.setVisibility(View.VISIBLE);
 
 
             }
         });
+        but_complete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileInfo.this,HomeScreen.class));
+            }
+        });
+        monthly_first.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new PromptDialog(ProfileInfo.this)
+                        .setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+                        .setAnimationEnable(true)
+                        .setTitleText("Confirm Transaction!")
+                        .setContentText("You are Subscribed for monthly \n \u20B9 100 ")
+                        .setPositiveListener(("ok"), new PromptDialog.OnPositiveListener() {
+                            @Override
+                            public void onClick(PromptDialog dialog) {
+                                dialog.dismiss();
+                                IV_personal.setImageResource(R.drawable.profile_basic_three);
+                                IV_professional.setImageResource(R.drawable.profile_professional_three);
+                                IV_complete.setImageResource(R.drawable.profile_complete_three);
+                                view4.setBackgroundResource(R.color.colorAccent);
+
+                            }
+                        }).show();
+            }
+        });
+        monthly_scond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new PromptDialog(ProfileInfo.this)
+                        .setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+                        .setAnimationEnable(true)
+                        .setTitleText("Confirm Transaction!")
+                        .setContentText("You are Subscribed for monthly \n \u20B9  200 ")
+                        .setPositiveListener(("ok"), new PromptDialog.OnPositiveListener() {
+                            @Override
+                            public void onClick(PromptDialog dialog) {
+                                dialog.dismiss();
+                                IV_personal.setImageResource(R.drawable.profile_basic_three);
+                                IV_professional.setImageResource(R.drawable.profile_professional_three);
+                                IV_complete.setImageResource(R.drawable.profile_complete_three);
+                                view4.setBackgroundResource(R.color.colorAccent);
+
+                            }
+                        }).show();
+            }
+        });
+        monthly_third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new PromptDialog(ProfileInfo.this)
+                        .setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+                        .setAnimationEnable(true)
+                        .setTitleText("Confirm Transaction!")
+                        .setContentText("You are Subscribed for monthly \n \u20B9  500 ")
+                        .setPositiveListener(("ok"), new PromptDialog.OnPositiveListener() {
+                            @Override
+                            public void onClick(PromptDialog dialog) {
+                                dialog.dismiss();
+                                IV_personal.setImageResource(R.drawable.profile_basic_three);
+                                IV_professional.setImageResource(R.drawable.profile_professional_three);
+                                IV_complete.setImageResource(R.drawable.profile_complete_three);
+                                view4.setBackgroundResource(R.color.colorAccent);
+
+                            }
+                        }).show();
+            }
+        });
+
     }
 
 }

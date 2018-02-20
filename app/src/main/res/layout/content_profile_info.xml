@@ -66,6 +66,8 @@
     <ScrollView
         android:id="@+id/srcollview_personal"
         android:layout_width="match_parent"
+        android:visibility="visible"
+
         android:layout_below="@+id/profile_linear"
         android:layout_height="match_parent">
         <include layout="@layout/content_profile_basicinfo" />
@@ -85,9 +87,21 @@
         android:id="@+id/srcollview_complete"
         android:layout_width="match_parent"
         android:visibility="invisible"
+
         android:layout_below="@+id/profile_linear"
         android:layout_height="match_parent">
         <include layout="@layout/content_profile_completeinfo" />
 
     </ScrollView>
+    <Button
+        android:id="@+id/complete_but"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:text="Complete"
+        android:layout_marginBottom="4dp"
+        android:visibility="invisible"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/but_selected"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
